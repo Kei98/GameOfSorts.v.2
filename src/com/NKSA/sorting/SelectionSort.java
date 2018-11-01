@@ -1,13 +1,14 @@
 package com.NKSA.sorting;
 
 import java.util.LinkedList;
+
+import com.NKSA.application.Main.dragongui;
 /**
  * 
  * @author NKSA
  *
- * @param <T>
  */
-public class SelectionSort<T extends Comparable<T>> {
+public class SelectionSort {
 	
 	/**
 	 * Atributos de la clase
@@ -17,13 +18,13 @@ public class SelectionSort<T extends Comparable<T>> {
 	
 	private int size;
 	private int order = (int) (Math.random() * 2);
-	private LinkedList<T> list;
+	private LinkedList<dragongui> list;
 	
 	/**
 	 * Constructor
 	 * @param l
 	 */
-	public SelectionSort(LinkedList<T> l) {
+	public SelectionSort(LinkedList<dragongui> l) {
 		this.size = l.size();
 		this.sort(l);
 	}
@@ -32,8 +33,8 @@ public class SelectionSort<T extends Comparable<T>> {
 	 * Método para ordenar los elementos de una lista
 	 * @param l
 	 */
-	private void sort(LinkedList<T> l){
-		T temp;
+	private void sort(LinkedList<dragongui> l){
+		dragongui temp;
 		while(this.size > 0) {
 			temp = findMin(l, this.size);
 			l.addLast(temp);
@@ -52,11 +53,11 @@ public class SelectionSort<T extends Comparable<T>> {
 	 * @param size
 	 * @return
 	 */
-	private T findMin(LinkedList<T> l, int size) {
-		T min;
+	private dragongui findMin(LinkedList<dragongui> l, int size) {
+		dragongui min;
 		min = l.get(0);
 		for(int i = 1; i < size; i ++) {
-			if(l.get(i).compareTo(min) < 0) {
+			if(l.get(i).getAge().compareTo(min.getAge()) < 0) {
 				min = l.get(i);
 			}
 		}
@@ -68,8 +69,8 @@ public class SelectionSort<T extends Comparable<T>> {
 	 * @param l
 	 * @return
 	 */
-	private LinkedList<T> turn(LinkedList<T> l){
-		LinkedList<T> l1 = new LinkedList<>();
+	private LinkedList<dragongui> turn(LinkedList<dragongui> l){
+		LinkedList<dragongui> l1 = new LinkedList<dragongui>();
 		for(int i = l.size() -1; i > -1; i--) {
 			l1.add(l.get(i));
 		}
@@ -79,7 +80,7 @@ public class SelectionSort<T extends Comparable<T>> {
 	/**
 	 * Imprime la lista que devuelve
 	 */
-	public void printL(LinkedList<T> list) {
+	public void printL(LinkedList<dragongui> list) {
 		System.out.print("[");
 		for(int i = 0; i < list.size() - 1; i++) {
 			System.out.print(list.get(i) + ", ");
@@ -91,7 +92,7 @@ public class SelectionSort<T extends Comparable<T>> {
 	 * Getter de la lista que se pasó
 	 * @return
 	 */
-	public LinkedList<T> getList() {
+	public LinkedList<dragongui> getList() {
 		return list;
 	}
 	

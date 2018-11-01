@@ -303,7 +303,7 @@ public class Main extends Application  {
 		img.relocate(x, y);
 	}
 
-	private static class dragongui extends ImageView {
+	public static class dragongui extends ImageView {
 		boolean dead;
 		String name;
 		String father;
@@ -324,6 +324,15 @@ public class Main extends Application  {
 		}
 		public void drakefly() {
 			setTranslateX(getTranslateX()-0.1);
+		}
+		public String getName() {
+			return name;
+		}
+		public Integer getaSpeed() {
+			return aSpeed;
+		}
+		public Integer getAge() {
+			return Age;
 		}
 	}
 	

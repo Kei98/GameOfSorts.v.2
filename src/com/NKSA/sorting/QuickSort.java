@@ -2,7 +2,9 @@ package com.NKSA.sorting;
 
 import java.util.LinkedList;
 
-public class QuickSort<T extends Comparable<T>> {
+import com.NKSA.application.Main.dragongui;
+
+public class QuickSort {
 
     /**
      * Atributos
@@ -10,14 +12,14 @@ public class QuickSort<T extends Comparable<T>> {
     private int i;
     private int j;
     private int order = (int)(Math.random() * 2);
-    private T pivot;
-    private T temp;
-    private LinkedList<T> list = new LinkedList<>();
+    private dragongui pivot;
+    private dragongui temp;
+    private LinkedList<dragongui> list = new LinkedList<>();
 
     /**
      * Constructor 
      */
-    public QuickSort(LinkedList<T> l) {
+    public QuickSort(LinkedList<dragongui> l) {
     	this.sort(l);
     }
 
@@ -28,7 +30,7 @@ public class QuickSort<T extends Comparable<T>> {
      * @param array:
      *            arreglo al cual se le desea ordenar mediante el método QuickSort.
      */
-    private void sort(LinkedList<T> array) {
+    private void sort(LinkedList<dragongui> array) {
     	sort(array, 0, array.size() - 1);
     }
 
@@ -42,16 +44,16 @@ public class QuickSort<T extends Comparable<T>> {
      * @param last:
      *            última posición en la lista
      */
-    private void sort(LinkedList<T> array, int first, int last) {
+    private void sort(LinkedList<dragongui> array, int first, int last) {
 	i = first;
 	j = last;
 	pivot = array.get((int) ((i + j) / 2));
 
 	do {
-	    while (array.get(i).compareTo(pivot) < 0) {
+	    while (array.get(i).getAge().compareTo(pivot.getAge()) < 0) {
 		i++;
 	    }
-	    while (array.get(j).compareTo(pivot) > 0) {
+	    while (array.get(j).getAge().compareTo(pivot.getAge()) > 0) {
 		j--;
 	    }
 	    if (i <= j) {
@@ -79,8 +81,8 @@ public class QuickSort<T extends Comparable<T>> {
      * Método para acomodar la lista de mayor a menor
      * @param l
      */
-    private LinkedList<T> turn(LinkedList<T> l) {
-    	LinkedList<T> l1 = new LinkedList<>();
+    private LinkedList<dragongui> turn(LinkedList<dragongui> l) {
+    	LinkedList<dragongui> l1 = new LinkedList<dragongui>();
     	for(int i = l.size()-1; i > -1; i--) {
     		l1.add(l.get(i));
     	}
@@ -94,7 +96,7 @@ public class QuickSort<T extends Comparable<T>> {
      * @param array:
      *            arreglo que se desea imprimir en consola.
      */
-    public void printL(LinkedList<T> array) {
+    public void printL(LinkedList<dragongui> array) {
 	System.out.print("[");
 	for (int i = 0; i < array.size() - 1; i++) {
 	    System.out.print(array.get(i) + ", ");
@@ -104,7 +106,7 @@ public class QuickSort<T extends Comparable<T>> {
 	System.out.println(" ");
     }
     
-    public LinkedList<T> getList() {
+    public LinkedList<dragongui> getList() {
     	this.printL(list);
 		return list;
 	}
