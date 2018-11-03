@@ -2,7 +2,9 @@ package com.NKSA.sorting;
 
 import java.util.LinkedList;
 
-import com.NKSA.application.Main.dragongui;
+import com.NKSA.dragon.dragon;
+
+
 
 public class QuickSort {
 
@@ -12,14 +14,14 @@ public class QuickSort {
     private int i;
     private int j;
     private int order = (int)(Math.random() * 2);
-    private dragongui pivot;
-    private dragongui temp;
-    private LinkedList<dragongui> list = new LinkedList<>();
+    private dragon pivot;
+    private dragon temp;
+    private LinkedList<dragon> list = new LinkedList<>();
 
     /**
      * Constructor 
      */
-    public QuickSort(LinkedList<dragongui> l) {
+    public QuickSort(LinkedList<dragon> l) {
     	this.sort(l);
     }
 
@@ -30,7 +32,7 @@ public class QuickSort {
      * @param array:
      *            arreglo al cual se le desea ordenar mediante el método QuickSort.
      */
-    private void sort(LinkedList<dragongui> array) {
+    private void sort(LinkedList<dragon> array) {
     	sort(array, 0, array.size() - 1);
     }
 
@@ -44,7 +46,7 @@ public class QuickSort {
      * @param last:
      *            última posición en la lista
      */
-    private void sort(LinkedList<dragongui> array, int first, int last) {
+    private void sort(LinkedList<dragon> array, int first, int last) {
 	i = first;
 	j = last;
 	pivot = array.get((int) ((i + j) / 2));
@@ -81,8 +83,8 @@ public class QuickSort {
      * Método para acomodar la lista de mayor a menor
      * @param l
      */
-    private LinkedList<dragongui> turn(LinkedList<dragongui> l) {
-    	LinkedList<dragongui> l1 = new LinkedList<dragongui>();
+    private LinkedList<dragon> turn(LinkedList<dragon> l) {
+    	LinkedList<dragon> l1 = new LinkedList<dragon>();
     	for(int i = l.size()-1; i > -1; i--) {
     		l1.add(l.get(i));
     	}
@@ -96,7 +98,7 @@ public class QuickSort {
      * @param array:
      *            arreglo que se desea imprimir en consola.
      */
-    public void printL(LinkedList<dragongui> array) {
+    public void printL(LinkedList<dragon> array) {
 	System.out.print("[");
 	for (int i = 0; i < array.size() - 1; i++) {
 	    System.out.print(array.get(i) + ", ");
@@ -106,7 +108,7 @@ public class QuickSort {
 	System.out.println(" ");
     }
     
-    public LinkedList<dragongui> getList() {
+    public LinkedList<dragon> getList() {
     	this.printL(list);
 		return list;
 	}

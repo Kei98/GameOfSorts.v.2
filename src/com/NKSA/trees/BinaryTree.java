@@ -1,10 +1,12 @@
 package com.NKSA.trees;
 
-public class BinaryTree<T extends Comparable<T>> {
+import com.NKSA.dragon.dragon;
+
+public class BinaryTree {
 	/**
 	 * Atributo
 	 */
-	private BinaryNode<T> root;
+	private BinaryNode<dragon> root;
 
 	/**
 	 * Constructor
@@ -20,7 +22,7 @@ public class BinaryTree<T extends Comparable<T>> {
 	 *            dato a ingresar al árbol.
 	 * @return
 	 */
-	public BinaryNode<T> insert(T data) {
+	public BinaryNode<dragon> insert(dragon data) {
 		root = insert(root, data);
 		return root;
 	}
@@ -34,13 +36,14 @@ public class BinaryTree<T extends Comparable<T>> {
 	 *            dato a ingresar árbol.
 	 * @return
 	 */
-	private BinaryNode<T> insert(BinaryNode<T> node, T data) {
-		if (node == null)
-			return new BinaryNode<T>(data);
-		if (node.getData().compareTo(data) > 0) {
-			node = new BinaryNode<T>(node.getData(), insert(node.getLeft(), data), node.getRight());
-		} else if (node.getData().compareTo(data) < 0) {
-			node = new BinaryNode<T>(node.getData(), node.getLeft(), insert(node.getRight(), data));
+	private BinaryNode<dragon> insert(BinaryNode<dragon> node, dragon data) {
+		if (node == null) {
+			return new BinaryNode<dragon>(data);
+		}
+		if (node.getData().getId().compareTo(data.getId()) > 0) {
+			node = new BinaryNode<dragon>(node.getData(), insert(node.getLeft(), data), node.getRight());
+		} else if (node.getData().getId().compareTo(data.getId()) < 0) {
+			node = new BinaryNode<dragon>(node.getData(), node.getLeft(), insert(node.getRight(), data));
 		}
 		return node;
 	}
@@ -52,7 +55,7 @@ public class BinaryTree<T extends Comparable<T>> {
 	 *            elemento que se desea eliminar.
 	 * @return
 	 */
-	public BinaryNode<T> delete(T data) {
+	public BinaryNode<dragon> delete(dragon data) {
 		if (this.root == null) {
 			return null;
 		} else {
@@ -69,13 +72,13 @@ public class BinaryTree<T extends Comparable<T>> {
 	 *            nodo a partir del cual se busca el elemento a eliminar.
 	 * @return
 	 */
-	private BinaryNode<T> delete(T data, BinaryNode<T> current) {
+	private BinaryNode<dragon> delete(dragon data, BinaryNode<dragon> current) {
 		if (current == null) {
 			return current;
 		}
-		if (current.getData().compareTo(data) > 0) {
+		if (current.getData().getId().compareTo(data.getId()) > 0) {
 			current.setLeft(delete(data, current.getLeft()));
-		} else if (current.getData().compareTo(data) < 0) {
+		} else if (current.getData().getId().compareTo(data.getId()) < 0) {
 			current.setRight(delete(data, current.getRight()));
 		} else if (current.getLeft() != null && current.getRight() != null) {
 			current.setData(findMin(current.getRight()).getData());
@@ -94,12 +97,12 @@ public class BinaryTree<T extends Comparable<T>> {
 	 *            dato que se desea encontrar.
 	 * @return: verdadero o falso si el dato se encuentra en el árbol.
 	 */
-	public boolean search(T data) {
-		BinaryNode<T> local = root;
+	public boolean search(dragon data) {
+		BinaryNode<dragon> local = root;
 		while (local != null) {
-			if (local.getData().compareTo(data) == 0)
+			if (local.getData().getId().compareTo(data.getId()) == 0)
 				return true;
-			else if (local.getData().compareTo(data) > 0)
+			else if (local.getData().getId().compareTo(data.getId()) > 0)
 				local = local.getLeft();
 			else
 				local = local.getRight();
@@ -112,7 +115,7 @@ public class BinaryTree<T extends Comparable<T>> {
 	 * 
 	 * @return: menor valor encontrado.
 	 */
-	public BinaryNode<T> findMin() {
+	public BinaryNode<dragon> findMin() {
 		return findMin(this.root);
 	}
 
@@ -123,7 +126,7 @@ public class BinaryTree<T extends Comparable<T>> {
 	 *            nodo a partir del cual se busca el dato de menor valor.
 	 * @return: menor valor encontrado.
 	 */
-	private BinaryNode<T> findMin(BinaryNode<T> current) {
+	private BinaryNode<dragon> findMin(BinaryNode<dragon> current) {
 		if (current == null) {
 			return null;
 		} else if (current.getLeft() == null) {
@@ -138,7 +141,7 @@ public class BinaryTree<T extends Comparable<T>> {
 	 * 
 	 * @return: mayor valor encontrado.
 	 */
-	public BinaryNode<T> findmax() {
+	public BinaryNode<dragon> findmax() {
 		return findMax(this.root);
 	}
 
@@ -149,7 +152,7 @@ public class BinaryTree<T extends Comparable<T>> {
 	 *            nodo a partir del cual se busca el dato de mayor valor.
 	 * @return: mayor valor encontrado.
 	 */
-	private BinaryNode<T> findMax(BinaryNode<T> current) {
+	private BinaryNode<dragon> findMax(BinaryNode<dragon> current) {
 		if (current == null) {
 			return null;
 		} else if (current.getRight() == null) {
@@ -170,7 +173,7 @@ public class BinaryTree<T extends Comparable<T>> {
 	 * 
 	 * @param r
 	 */
-	private void inOrder(BinaryNode<T> r) {
+	private void inOrder(BinaryNode<dragon> r) {
 		if (r != null) {
 			inOrder(r.getLeft());
 			System.out.print(r.getData() + " ");
@@ -189,7 +192,7 @@ public class BinaryTree<T extends Comparable<T>> {
 	 * 
 	 * @param r
 	 */
-	private void preOrder(BinaryNode<T> r) {
+	private void preOrder(BinaryNode<dragon> r) {
 		if (r != null) {
 			System.out.print(r.getData() + " ");
 			preOrder(r.getLeft());
@@ -208,7 +211,7 @@ public class BinaryTree<T extends Comparable<T>> {
 	 * 
 	 * @param r
 	 */
-	private void postOrder(BinaryNode<T> r) {
+	private void postOrder(BinaryNode<dragon> r) {
 		if (r != null) {
 			postOrder(r.getLeft());
 			postOrder(r.getRight());

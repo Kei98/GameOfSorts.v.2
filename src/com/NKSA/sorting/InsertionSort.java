@@ -1,7 +1,7 @@
 package com.NKSA.sorting;
 
 import java.util.LinkedList;
-import com.NKSA.application.Main.dragongui;
+import com.NKSA.dragon.dragon;
 /**
  * 
  * @author NKSA
@@ -10,17 +10,17 @@ import com.NKSA.application.Main.dragongui;
 public class InsertionSort {
 	
 	private int order = (int)(Math.random() * 2);
-	private LinkedList<dragongui> list;
+	private LinkedList<dragon> list;
 	
 
-	public InsertionSort(LinkedList<dragongui> list) {
+	public InsertionSort(LinkedList<dragon> list) {
 		this.sort(list);
 	}
 	
-	private void sort(LinkedList<dragongui> l){
+	private void sort(LinkedList<dragon> l){
 		for(int i = 1; i < l.size(); i++) {
 			if(l.get(i).getaSpeed().compareTo(l.get(i-1).getaSpeed()) < 0) {
-				dragongui temp = l.get(i);
+				dragon temp = l.get(i);
 				l.remove(i);
 				int n = i-1;
 				while(n >= 0 && temp.getaSpeed().compareTo(l.get(n).getaSpeed()) < 0) {
@@ -36,8 +36,8 @@ public class InsertionSort {
 		this.printL(list);
 	}
 	
-	private LinkedList<dragongui> turn(LinkedList<dragongui> l) {
-    	LinkedList<dragongui> l1 = new LinkedList<dragongui>();
+	private LinkedList<dragon> turn(LinkedList<dragon> l) {
+    	LinkedList<dragon> l1 = new LinkedList<dragon>();
     	for(int i = l.size()-1; i > -1; i--) {
     		l1.add(l.get(i));
     	}
@@ -46,7 +46,7 @@ public class InsertionSort {
     }
 	
 	
-	private void printL(LinkedList<dragongui> list) {
+	private void printL(LinkedList<dragon> list) {
 		System.out.print("[");
 		for(int i = 0; i < list.size() - 1; i++) {
 			System.out.print(list.get(i) + ", ");
@@ -54,7 +54,7 @@ public class InsertionSort {
 		System.out.print(list.getLast() + "]" + "\n");
 	}
 	
-	public LinkedList<dragongui> getList() {
+	public LinkedList<dragon> getList() {
 		return list;
 	}
 	

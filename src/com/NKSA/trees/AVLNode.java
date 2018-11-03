@@ -1,13 +1,15 @@
 package com.NKSA.trees;
+import com.NKSA.dragon.dragon;
 
-public class AVLNode<T extends Comparable<T>> implements Comparable<AVLNode<T>> {
+@SuppressWarnings("hiding")
+public class AVLNode<dragon> {
 
     /**
      * Atributos
      */
-    private T data;
-    private AVLNode<T> left;
-    private AVLNode<T> right;
+    private dragon data;
+    private AVLNode<dragon> left;
+    private AVLNode<dragon> right;
     private int x;
     private int y;
     public int level;
@@ -19,8 +21,8 @@ public class AVLNode<T extends Comparable<T>> implements Comparable<AVLNode<T>> 
      * @param data:
      *            dato que recibirá el nodo del árbol.
      */
-    public AVLNode(T data) {
-	this(data, null, null);
+    public AVLNode(dragon data) {
+    	this(data, null, null);
     }
 
     /**
@@ -34,29 +36,28 @@ public class AVLNode<T extends Comparable<T>> implements Comparable<AVLNode<T>> 
      * @param right:
      *            nodo izquierdo del nuevo nodo.
      */
-    public AVLNode(T data, AVLNode<T> left, AVLNode<T> right) {
-	super();
-	this.data = data;
-	this.left = left;
-	this.right = right;
+    public AVLNode(dragon data, AVLNode<dragon> left, AVLNode<dragon> right) {
+    	super();
+    	this.data = data;
+    	this.left = left;
+    	this.right = right;
 
-	if (left == null && right == null) {
-	    setDepth(1);
-	} else if (left == null) {
-	    setDepth(right.getDepth() + 1);
-	} else if (right == null) {
-	    setDepth(left.getDepth() + 1);
-	} else {
-	    setDepth(Math.max(left.getDepth(), right.getDepth()) + 1);
-	}
+    	if (left == null && right == null) {
+    		setDepth(1);
+    	} else if (left == null) {
+    		setDepth(right.getDepth() + 1);
+    	} else if (right == null) {
+    		setDepth(left.getDepth() + 1);
+    	} else {
+    		setDepth(Math.max(left.getDepth(), right.getDepth()) + 1);
+    	}
     }
 
     /**
      * 
      */
-    @Override
-    public int compareTo(AVLNode<T> o) {
-	return 0;
+    public int compareTo(AVLNode<dragon> o) {
+    	return 0;
     }
 
     /**
@@ -64,7 +65,7 @@ public class AVLNode<T extends Comparable<T>> implements Comparable<AVLNode<T>> 
      */
     @Override
     public String toString() {
-	return "Level " + level + ": " + data;
+    	return "Level " + level + ": " + data;
     }
 
     /**
@@ -72,51 +73,51 @@ public class AVLNode<T extends Comparable<T>> implements Comparable<AVLNode<T>> 
      * 
      * @return
      */
-    public T getData() {
-	return data;
+    public dragon getData() {
+    	return data;
     }
 
-    public void setData(T data) {
-	this.data = data;
+    public void setData(dragon data) {
+    	this.data = data;
     }
 
-    public AVLNode<T> getLeft() {
-	return left;
+    public AVLNode<dragon> getLeft() {
+    	return left;
     }
 
-    public void setLeft(AVLNode<T> left) {
-	this.left = left;
+    public void setLeft(AVLNode<dragon> left) {
+    	this.left = left;
     }
 
-    public AVLNode<T> getRight() {
-	return right;
+    public AVLNode<dragon> getRight() {
+    	return right;
     }
 
-    public void setRight(AVLNode<T> right) {
-	this.right = right;
+    public void setRight(AVLNode<dragon> right) {
+    	this.right = right;
     }
 
     public int getX() {
-		return x;
-	}
+    	return x;
+    }
 
-	public void setX(int x) {
-		this.x = x;
-	}
+    public void setX(int x) {
+    	this.x = x;
+    }
 
-	public int getY() {
-		return y;
-	}
+    public int getY() {
+    	return y;
+    }
 
-	public void setY(int y) {
-		this.y = y;
-	}
+    public void setY(int y) {
+    	this.y = y;
+    }
 
-	public int getDepth() {
-	return depth;
+    public int getDepth() {
+    	return depth;
     }
 
     public void setDepth(int depth) {
-	this.depth = depth;
+    	this.depth = depth;
     }
 }

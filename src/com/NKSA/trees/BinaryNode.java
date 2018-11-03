@@ -1,12 +1,18 @@
 package com.NKSA.trees;
 
-public class BinaryNode<T extends Comparable<T>> {
+import java.util.LinkedList;
+import com.NKSA.dragon.dragon;
+
+@SuppressWarnings("hiding")
+public class BinaryNode<dragon> {
 	/**
      * Atributos
      */
-    private T data;
-    private BinaryNode<T> left;
-    private BinaryNode<T> right;
+    private dragon data;
+    private BinaryNode<dragon> left;
+    private BinaryNode<dragon> right;
+    private LinkedList<BinaryNode<dragon>> children;
+    private BinaryNode<dragon> parent;
     private int x;
     private int y;
 
@@ -16,10 +22,12 @@ public class BinaryNode<T extends Comparable<T>> {
      * @param data:
      *            dato que guardará el nodo
      */
-    public BinaryNode(T data) {
+    public BinaryNode(dragon data) {
 	this.data = data;
 	this.right = null;
 	this.left = null;
+	this.parent = null;
+	this.children = null;
     }
 
     /**
@@ -32,38 +40,71 @@ public class BinaryNode<T extends Comparable<T>> {
      * @param right:
      *            nodo derecho del nuevo nodo
      */
-    public BinaryNode(T data, BinaryNode<T> left, BinaryNode<T> right) {
-	this.data = data;
-	this.left = left;
-	this.right = right;
+    public BinaryNode(dragon data, BinaryNode<dragon> left, BinaryNode<dragon> right) {
+    	this.data = data;
+    	this.left = left;
+    	this.right = right;
+    	this.parent = null;
+    	this.children.add(left);
+    	this.children.add(right);
+    	this.left.parent = this;
+    	this.right.parent = this;
     }
-
+    
+    
+    public BinaryNode(dragon data, BinaryNode<dragon> left, BinaryNode<dragon> right, BinaryNode<dragon> parent) {
+    	this.data = data;
+    	this.left = left;
+    	this.right = right;
+    	this.parent = parent;
+    	this.children.add(left);
+    	this.children.add(right);
+    	this.left.parent = this;
+    	this.right.parent = this;
+        }
+    
     /**
      * Getters y Setters
      */
-    public T getData() {
+    public dragon getData() {
 	return data;
     }
 
-    public void setData(T data) {
+    public void setData(dragon data) {
 	this.data = data;
     }
 
-    public BinaryNode<T> getRight() {
+    public BinaryNode<dragon> getRight() {
 	return right;
     }
 
-    public void setRight(BinaryNode<T> right) {
+    public void setRight(BinaryNode<dragon> right) {
 	this.right = right;
     }
 
-    public BinaryNode<T> getLeft() {
+    public BinaryNode<dragon> getLeft() {
 	return left;
     }
 
-    public void setLeft(BinaryNode<T> left) {
+    public void setLeft(BinaryNode<dragon> left) {
 	this.left = left;
     }
+
+	public LinkedList<BinaryNode<dragon>> getChildren() {
+		return children;
+	}
+
+	public void setChildren(LinkedList<BinaryNode<dragon>> children) {
+		this.children = children;
+	}
+
+	public BinaryNode<dragon> getParent() {
+		return parent;
+	}
+
+	public void setParent(BinaryNode<dragon> parent) {
+		this.parent = parent;
+	}
 
 	public int getX() {
 		return x;

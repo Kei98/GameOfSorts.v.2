@@ -2,7 +2,9 @@ package com.NKSA.sorting;
 
 import java.util.LinkedList;
 
-import com.NKSA.application.Main.dragongui;
+import com.NKSA.dragon.dragon;
+
+
 /**
  * 
  * @author NKSA
@@ -18,13 +20,13 @@ public class SelectionSort {
 	
 	private int size;
 	private int order = (int) (Math.random() * 2);
-	private LinkedList<dragongui> list;
+	private LinkedList<com.NKSA.dragon.dragon> list;
 	
 	/**
 	 * Constructor
 	 * @param l
 	 */
-	public SelectionSort(LinkedList<dragongui> l) {
+	public SelectionSort(LinkedList<dragon> l) {
 		this.size = l.size();
 		this.sort(l);
 	}
@@ -33,8 +35,8 @@ public class SelectionSort {
 	 * Método para ordenar los elementos de una lista
 	 * @param l
 	 */
-	private void sort(LinkedList<dragongui> l){
-		dragongui temp;
+	private void sort(LinkedList<dragon> l){
+		dragon temp;
 		while(this.size > 0) {
 			temp = findMin(l, this.size);
 			l.addLast(temp);
@@ -53,8 +55,8 @@ public class SelectionSort {
 	 * @param size
 	 * @return
 	 */
-	private dragongui findMin(LinkedList<dragongui> l, int size) {
-		dragongui min;
+	private dragon findMin(LinkedList<dragon> l, int size) {
+		dragon min;
 		min = l.get(0);
 		for(int i = 1; i < size; i ++) {
 			if(l.get(i).getAge().compareTo(min.getAge()) < 0) {
@@ -69,8 +71,8 @@ public class SelectionSort {
 	 * @param l
 	 * @return
 	 */
-	private LinkedList<dragongui> turn(LinkedList<dragongui> l){
-		LinkedList<dragongui> l1 = new LinkedList<dragongui>();
+	private LinkedList<dragon> turn(LinkedList<dragon> l){
+		LinkedList<dragon> l1 = new LinkedList<dragon>();
 		for(int i = l.size() -1; i > -1; i--) {
 			l1.add(l.get(i));
 		}
@@ -80,7 +82,7 @@ public class SelectionSort {
 	/**
 	 * Imprime la lista que devuelve
 	 */
-	public void printL(LinkedList<dragongui> list) {
+	public void printL(LinkedList<dragon> list) {
 		System.out.print("[");
 		for(int i = 0; i < list.size() - 1; i++) {
 			System.out.print(list.get(i) + ", ");
@@ -92,7 +94,7 @@ public class SelectionSort {
 	 * Getter de la lista que se pasó
 	 * @return
 	 */
-	public LinkedList<dragongui> getList() {
+	public LinkedList<dragon> getList() {
 		return list;
 	}
 	
