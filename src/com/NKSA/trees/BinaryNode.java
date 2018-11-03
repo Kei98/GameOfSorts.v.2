@@ -1,6 +1,6 @@
 package com.NKSA.trees;
 
-import java.util.LinkedList;
+
 import com.NKSA.dragon.dragon;
 
 @SuppressWarnings("hiding")
@@ -11,8 +11,6 @@ public class BinaryNode<dragon> {
     private dragon data;
     private BinaryNode<dragon> left;
     private BinaryNode<dragon> right;
-    private LinkedList<BinaryNode<dragon>> children;
-    private BinaryNode<dragon> parent;
     private int x;
     private int y;
 
@@ -26,8 +24,6 @@ public class BinaryNode<dragon> {
 	this.data = data;
 	this.right = null;
 	this.left = null;
-	this.parent = null;
-	this.children = null;
     }
 
     /**
@@ -44,24 +40,9 @@ public class BinaryNode<dragon> {
     	this.data = data;
     	this.left = left;
     	this.right = right;
-    	this.parent = null;
-    	this.children.add(left);
-    	this.children.add(right);
-    	this.left.parent = this;
-    	this.right.parent = this;
     }
     
     
-    public BinaryNode(dragon data, BinaryNode<dragon> left, BinaryNode<dragon> right, BinaryNode<dragon> parent) {
-    	this.data = data;
-    	this.left = left;
-    	this.right = right;
-    	this.parent = parent;
-    	this.children.add(left);
-    	this.children.add(right);
-    	this.left.parent = this;
-    	this.right.parent = this;
-        }
     
     /**
      * Getters y Setters
@@ -89,22 +70,6 @@ public class BinaryNode<dragon> {
     public void setLeft(BinaryNode<dragon> left) {
 	this.left = left;
     }
-
-	public LinkedList<BinaryNode<dragon>> getChildren() {
-		return children;
-	}
-
-	public void setChildren(LinkedList<BinaryNode<dragon>> children) {
-		this.children = children;
-	}
-
-	public BinaryNode<dragon> getParent() {
-		return parent;
-	}
-
-	public void setParent(BinaryNode<dragon> parent) {
-		this.parent = parent;
-	}
 
 	public int getX() {
 		return x;

@@ -8,6 +8,7 @@ public class BinaryTree {
 	 */
 	private BinaryNode<dragon> root;
 
+
 	/**
 	 * Constructor
 	 */
@@ -170,14 +171,18 @@ public class BinaryTree {
 	}
 
 	/**
-	 * 
+	 * Método para asignar el orden en la interfaz
 	 * @param r
 	 */
-	private void inOrder(BinaryNode<dragon> r) {
+	public static void inOrder(BinaryNode<dragon> r) {
 		if (r != null) {
 			inOrder(r.getLeft());
+			r.getLeft().setX(r.getX() + 10);
+			r.getLeft().setY(r.getY() - 10);
 			System.out.print(r.getData() + " ");
 			inOrder(r.getRight());
+			r.getRight().setX(r.getX() + 10);
+			r.getRight().setY(r.getY() + 10);
 		}
 	}
 
@@ -217,6 +222,10 @@ public class BinaryTree {
 			postOrder(r.getRight());
 			System.out.print(r.getData() + " ");
 		}
+	}
+	
+	public BinaryNode<dragon> getRoot() {
+		return root;
 	}
 
 }
